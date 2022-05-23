@@ -36,14 +36,12 @@ class SubCategory (models.Model):
     def __str__(self) :
         return self.sub_name
 
+#@login_required(login_url='/account/login.html/')
 class Cart(models.Model):
     user = models.ForeignKey(Customer , on_delete = models.CASCADE)
     product_id = models.ForeignKey(Products , on_delete = models.CASCADE)
     qnt = models.IntegerField(null = False  , blank = False)
-    created = models.DateTimeField(auto_now_add=True)
-
-
-
+    
 
 
 

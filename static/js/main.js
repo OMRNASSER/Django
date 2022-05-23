@@ -27,10 +27,27 @@ $(document).ready(function(){
 	        zIndex: 2147483647 // Z-Index for the overlay
 		});
 	});
-	// $('.addCartToBtn').click(function (e) { 
-	// 	e.preventDefault();
-		
-	// });
+	$('.addCartToBtn').click(function (e) { 
+		e.preventDefault();
+		var product_id = $(this).closest('.product_data').find('.pro_id').val();
+		var product_qnty = $(this).closest('.product_data').find('.cart_quantity_input').val();
+		var token = 
+
+		$.ajax({
+			method: "POST",
+			url: "/cart.html",
+			data: {
+
+				'product_id':product_id, 
+				'product_qnty':product_qnty, 
+				csrfmiddlewaretoken : token
+			},
+			dataType: "dataType",
+			success: function (response) {
+				
+			}
+		});
+	});
 });
 
 

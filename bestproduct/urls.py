@@ -10,7 +10,12 @@ urlpatterns = [
     path('shop.html/product-details.html/<int:proid>',views.product_shop  ),
     path("index.html", views.products),
     path('login.html', views.login),
-    path("cart.html", views.cart  , name ="cart"), 
+
+    path('cart.html/<int:proid>', views.cart  , name ="cart"), 
+
+   
+    path('cart.html/', views.cartitem, name='cartitem'),
+    path('deleteitem/<int:proid>/', views.deleteitem, name='delete'),
 
 
 

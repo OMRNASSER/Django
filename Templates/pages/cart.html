@@ -153,7 +153,7 @@
 				<table class="table table-condensed">
 					<thead>
 						<tr class="cart_menu">
-							<td class="image">Item</td>
+							<td class="image"></td>
 							<td class="description"></td>
 							<td class="price">Price</td>
 							<td class="quantity">Quantity</td>
@@ -163,15 +163,20 @@
 					</thead>
 					<tbody>
 						<tr>
+			{% for pro in products %}
+            {% for order in orders %}
+            {{pro.id}}
+            {{order.product_id}}
+            {% if pro.id == order.product_id %}
 							<td class="cart_product">
-								<a href=""><img src="{% static 'images/cart/one.png' %}" alt=""></a>
+								<a href=""><img src="{{pro.image.url}}" alt="" width="200" height="150"></a>
 							</td>
 							<td class="cart_description">
-								<h4><a href="">Colorblock Scuba</a></h4>
-								<p>Web ID: 1089772</p>
+								<h4><a href="">{{pro.name}}</a></h4>
+								<p>Web ID: {{pro.id}}</p>
 							</td>
 							<td class="cart_price">
-								<p>$59</p>
+								<p>${{pro.price}}</p>
 							</td>
 							<td class="cart_quantity">
 								<div class="cart_quantity_button">
@@ -181,11 +186,14 @@
 								</div>
 							</td>
 							<td class="cart_total">
-								<p class="cart_total_price">$59</p>
+								<p class="cart_total_price">$ {{pro.price}}</p>
 							</td>
 							<td class="cart_delete">
 								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
 							</td>
+				{% endif %}
+				{% endfor %}
+				{% endfor %}
 						</tr>
 
 						
